@@ -18,7 +18,7 @@ function Users() {
 				</div>
 				<div className="bg-green-100 p-4 rounded-lg shadow-md">
 					<h2 className="text-xl font-semibold mb-2 text-green-900">
-						Recent Activity
+						Recent Activity(Dummy Data)
 					</h2>
 					<ul className="text-green-800">
 						<li>Logged in 2 hours ago</li>
@@ -27,7 +27,7 @@ function Users() {
 				</div>
 				<div className="bg-green-100 p-4 rounded-lg shadow-md">
 					<h2 className="text-xl font-semibold mb-2 text-green-900">
-						Statistics
+						Statistics(Dummy Data)
 					</h2>
 					<p className="text-green-800">Reviews: 10</p>
 					<p className="text-green-800">Comments: 25</p>
