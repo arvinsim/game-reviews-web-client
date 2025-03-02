@@ -4,6 +4,7 @@ import {
 	useQuery,
 } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
+import { CreateUserForm } from "../components/CreateUserForm";
 
 type UserInfoData = {
 	id: number;
@@ -22,6 +23,7 @@ function Users() {
 		<QueryClientProvider client={queryClient}>
 			<div className="p-4">
 				<h1 className="text-2xl font-bold mb-4">User Dashboard</h1>
+				<CreateUserForm />
 				<UsersInfo />
 			</div>
 		</QueryClientProvider>
