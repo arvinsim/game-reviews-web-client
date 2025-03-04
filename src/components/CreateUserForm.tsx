@@ -1,21 +1,38 @@
 import type React from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
+import { createUser } from "../api/userApi";
 
 type FormValues = {
 	username: string;
 	email: string;
 	password: string;
+	confirmPassword: string;
 };
 
 export const CreateUserForm: React.FC = () => {
 	const {
 		register,
 		handleSubmit,
+		watch,
 		formState: { errors },
 	} = useForm<FormValues>();
 
-	const onSubmit: SubmitHandler<FormValues> = (data) => {
-		console.log(data);
+	const password = watch("password");
+
+	const onSubmit: SubmitHandler<FormValues> = async (data) => {
+		try {
+			const result = await createUser({
+				username: data.username,
+				email: data.email,
+				password: data.password,
+			});
+
+			console.log("User created successfully:", result);
+			// Handle successful creation (e.g., redirect or show success message)
+		} catch (error) {
+			console.error("Error creating user:", error);
+			// Handle error (e.g., show error message to user)
+		}
 	};
 
 	return (
@@ -28,7 +45,7 @@ export const CreateUserForm: React.FC = () => {
 				<div className="mb-4">
 					<label
 						htmlFor="create-user-form-username"
-						className="block text-gray-700"
+						className="bl</div>ock text-gray-700"
 					>
 						Username
 					</label>
@@ -86,9 +103,32 @@ export const CreateUserForm: React.FC = () => {
 						<p className="text-red-500 text-sm">{errors.password.message}</p>
 					)}
 				</div>
+				<div className="mb-4">
+					<label
+						htmlFor="create-user-form-confirm-password"
+						className="block text-gray-700"
+					>
+						Confirm Password
+					</label>
+					<input
+						id="create-user-form-confirm-password"
+						type="password"
+						{...register("confirmPassword", {
+							required: "Please confirm your password",
+							validate: (value) =>
+								value === password || "Passwords do not match",
+						})}
+						className="w-full px-3 py-2 border rounded"
+					/>
+					{errors.confirmPassword && (
+						<p className="text-red-500 text-sm">
+							{errors.confirmPassword.message}
+						</p>
+					)}
+				</div>
 				<button
 					type="submit"
-					className="w-full bg-blue-500 text-white py-2 rounded"
+					className="w-full bg-blue-500 text-white py-2 rounded cursor-pointer hover:bg-blue-600 active:bg-blue-700 transition-colors"
 				>
 					Create User
 				</button>
