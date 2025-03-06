@@ -6,14 +6,9 @@ interface CreateUserData {
 
 // Define a config file or use environment variables
 const API_BASE_URL =
-	import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
+	import.meta.env.VITE_API_BASE_URL || "http://localhost:8080";
 
 export const createUser = async (userData: CreateUserData) => {
-	console.log(
-		"import.meta.env.VITE_API_BASE_URL",
-		import.meta.env.VITE_API_BASE_URL,
-	);
-
 	const response = await fetch(`${API_BASE_URL}/users`, {
 		method: "POST",
 		headers: {
@@ -23,7 +18,8 @@ export const createUser = async (userData: CreateUserData) => {
 	});
 
 	if (!response.ok) {
-		throw new Error("Failed to create user");
+		const errorText = await response.text();
+		throw new Error(`Failed to create user: ${response.status} ${errorText}`);
 	}
 
 	return await response.json();
