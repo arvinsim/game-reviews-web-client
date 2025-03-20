@@ -1,3 +1,4 @@
+import { useNavigate } from "@tanstack/react-router";
 import type React from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { createUser } from "../api/userApi";
@@ -17,18 +18,24 @@ export const CreateUserForm: React.FC = () => {
 		formState: { errors },
 	} = useForm<FormValues>();
 
+	const navigate = useNavigate();
+
 	const password = watch("password");
 
 	const onSubmit: SubmitHandler<FormValues> = async (data) => {
 		try {
-			const result = await createUser({
+			await createUser({
 				username: data.username,
 				email: data.email,
 				password: data.password,
 			});
-
-			console.log("User created successfully:", result);
-			// Handle successful creation (e.g., redirect or show success message)
+			navigate({
+				to: "/users",
+				search: {
+					message: "New user created!",
+					type: "success",
+				},
+			});
 		} catch (error) {
 			console.error("Error creating user:", error);
 			// Handle error (e.g., show error message to user)
