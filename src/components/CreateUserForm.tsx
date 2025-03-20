@@ -36,8 +36,7 @@ export const CreateUserForm: React.FC = () => {
 	};
 
 	return (
-		<div className="max-w-md mx-auto mt-10">
-			<h2 className="text-2xl font-bold mb-5">Create New User</h2>
+		<div className="max-w-md mt-10 border border-gray-300 rounded-lg overflow-hidden">
 			<form
 				onSubmit={handleSubmit(onSubmit)}
 				className="bg-white p-6 rounded shadow-md"
@@ -128,7 +127,7 @@ export const CreateUserForm: React.FC = () => {
 				</div>
 				<button
 					type="submit"
-					className="w-full bg-blue-500 text-white py-2 rounded cursor-pointer hover:bg-blue-600 active:bg-blue-700 transition-colors"
+					className="w-full bg-green-500 text-white py-2 rounded cursor-pointer hover:bg-green-600 active:bg--700 transition-colors"
 				>
 					Create User
 				</button>
