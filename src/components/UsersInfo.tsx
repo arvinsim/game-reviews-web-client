@@ -1,9 +1,4 @@
-import {
-	QueryClient,
-	QueryClientProvider,
-	useQuery,
-} from "@tanstack/react-query";
-import { createFileRoute } from "@tanstack/react-router";
+import { useQuery } from "@tanstack/react-query";
 
 type UserInfoData = {
 	id: number;
@@ -11,24 +6,7 @@ type UserInfoData = {
 	email: string;
 };
 
-export const Route = createFileRoute("/users")({
-	component: Users,
-});
-
-const queryClient = new QueryClient();
-
-function Users() {
-	return (
-		<QueryClientProvider client={queryClient}>
-			<div className="p-4">
-				<h1 className="text-2xl font-bold mb-4">User Dashboard</h1>
-				<UsersInfo />
-			</div>
-		</QueryClientProvider>
-	);
-}
-
-function UsersInfo() {
+export function UsersInfo() {
 	const { isPending, error, data } = useQuery<UserInfoData[]>({
 		queryKey: ["userInfo"],
 		queryFn: async () => {
