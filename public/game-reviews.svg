@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" ry="12" fill="#1e1e1e"/>
+
+  <!-- D-Pad -->
+  <rect x="18" y="28" width="4" height="8" fill="#ffffff"/>
+  <rect x="16" y="30" width="8" height="4" fill="#ffffff"/>
+
+  <!-- AB buttons -->
+  <circle cx="44" cy="28" r="3" fill="#ff4757"/>
+  <circle cx="44" cy="36" r="3" fill="#2ed573"/>
+
+  <!-- Star (review symbol) -->
+  <path d="M32 16l2.2 4.5 5 0.7-3.6 3.5 0.8 5-4.4-2.3-4.4 2.3 0.8-5-3.6-3.5 5-0.7z" fill="#f1c40f"/>
+
+  <!-- Controller outline (simple arc) -->
+  <path d="M20 44c-6-4-8-14-2-20s16-6 22 0 4 16-2 20c-6 4-12 4-18 0z" fill="none" stroke="#ffffff" stroke-width="2"/>
+</svg>
